@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from core.bookstore.models import Order
-from .category_serializer import CategorySerializer
 from .product_serializer import ProductSerializer
 
 
