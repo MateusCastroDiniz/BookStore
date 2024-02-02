@@ -11,6 +11,7 @@ factory-boy = "^3.3.0"
 pytest = "^8.0.0"
 Django = "^5.0.1"
 django-restframework = "^0.0.1"
+djangorestframework = "^3.14.0"
 
 
 [build-system]
