@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "bookstore"
+version = "0.2.0"
+description = "Refatoração do zero..."
+authors = ["Mateus Diniz <serv.mateus@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+factory-boy = "^3.3.0"
+pytest = "^8.0.0"
+Django = "^5.0.1"
+django-restframework = "^0.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
