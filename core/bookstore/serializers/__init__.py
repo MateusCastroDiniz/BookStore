@@ -1,3 +1,3 @@
-from .category_serializer import *
-from .product_serializer import *
-from .order_serializer import *
+from .category_serializer import CategorySerializer
+from .product_serializer import ProductSerializer
+from .order_serializer import OrderSerializer
