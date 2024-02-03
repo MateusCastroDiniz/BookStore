@@ -13,6 +13,7 @@ Django = "^5.0.1"
 django-restframework = "^0.0.1"
 djangorestframework = "^3.14.0"
 pytest-django = "^4.8.0"
+django-extensions = "^3.2.3"
 
 
 [build-system]

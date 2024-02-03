@@ -1,9 +1,9 @@
 import factory
 
 from django.contrib.auth.models import User
-from .models.Product import Product
-from .models.Order import Order
-from .models.Category import Category
+from .models.product import Product
+from .models.order import Order
+from .models.category import Category
 
 
 class UserFactory(factory.django.DjangoModelFactory):
