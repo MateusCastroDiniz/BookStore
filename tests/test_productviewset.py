@@ -15,8 +15,11 @@ class TestProductViewSet(APITestCase):
     def test_get_products(self):
         response = self.client.get(reverse('product-list'))
 
-        product_data = json.loads(response.content)
+        product_data = json.loads(response.content)['results']
+        print(product_data)
+
         self.assertEqual(product_data[0]['title'], self.product.title)
+
         self.assertEqual(product_data[0]['price'], self.product.price)
         self.assertEqual(product_data[0]['active'], self.product.active)
 
