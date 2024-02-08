@@ -5,18 +5,20 @@ from django.urls import reverse
 from core.bookstore.factories import *
 from core.bookstore.models import *
 
+
 class TestProductViewSet(APITestCase):
     client = APIClient()
 
     def setUp(self):
         self.user = UserFactory()
+
         self.product = ProductFactory(title='produtoTeste', price=50.0)
 
     def test_get_products(self):
         response = self.client.get(reverse('product-list'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         product_data = json.loads(response.content)['results']
-        print(product_data)
 
         self.assertEqual(product_data[0]['title'], self.product.title)
 

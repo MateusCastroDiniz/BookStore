@@ -18,12 +18,7 @@ class TestCategoryViewSet(APITestCase):
 
         category_data = json.loads(response.content)['results']
 
-        # import pdb
-        #
-        # pdb.set_trace()
-
         self.assertEqual(category_data[0]['title'], self.category.title)
-
 
     def test_create_category(self):
         data = json.dumps({

@@ -19,4 +19,4 @@ def test_product_category_title(product_created):
     for category in product_created.category.all():
         if 'food' in category.title:
             assert category.title == 'teste'
-        return False
+        return None
