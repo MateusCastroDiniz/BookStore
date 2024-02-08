@@ -23,4 +23,4 @@ def test_order_product_name(order_created):
     for product in products:
         if 'teste2' in product.title:
             assert product.title == 'teste2'
-        return False
+        return None

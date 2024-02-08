@@ -4,19 +4,27 @@ from rest_framework import status
 from django.urls import reverse
 from core.bookstore.factories import *
 from core.bookstore.models import *
+from rest_framework.authtoken.models import Token
+
 
 class TestProductViewSet(APITestCase):
     client = APIClient()
 
     def setUp(self):
         self.user = UserFactory()
+        token = Token.objects.create(user=self.user)
+        token.save()
+
         self.product = ProductFactory(title='produtoTeste', price=50.0)
 
     def test_get_products(self):
+
+        token = Token.objects.get(user__username=self.user.username)
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = self.client.get(reverse('product-list'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         product_data = json.loads(response.content)['results']
-        print(product_data)
 
         self.assertEqual(product_data[0]['title'], self.product.title)
 
@@ -24,6 +32,8 @@ class TestProductViewSet(APITestCase):
         self.assertEqual(product_data[0]['active'], self.product.active)
 
     def test_create_product(self):
+        token = Token.objects.get(user__username=self.user.username)
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         category = CategoryFactory()
         data = json.dumps({
             'title': 'celular',
