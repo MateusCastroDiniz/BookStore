@@ -5,7 +5,9 @@ from .product_serializer import ProductSerializer
 
 class OrderSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True, many=True)
-    products_id = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all(), write_only=True, many=True)
+    products_id = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all(), write_only=True, many=True
+    )
     total = serializers.SerializerMethodField()
 
     def get_total(self, instance):
@@ -13,8 +15,8 @@ class OrderSerializer(serializers.ModelSerializer):
         return total
 
     def create(self, validated_data):
-        product_data = validated_data.pop('products_id')
-        user_data = validated_data.pop('user')
+        product_data = validated_data.pop("products_id")
+        user_data = validated_data.pop("user")
 
         # se der algum problema, talvez seja aqui!
         # mude user=user_data para **validated_data, ou faça o contrário.
@@ -26,9 +28,4 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = [
-            'product',
-            'total',
-            'user',
-            'products_id'
-        ]
+        fields = ["product", "total", "user", "products_id"]

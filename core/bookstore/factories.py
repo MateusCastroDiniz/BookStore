@@ -7,17 +7,17 @@ from .models.category import Category
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    username = factory.Faker('pystr')
-    email = factory.LazyAttribute(lambda x: '%s@exemple.com' % x.username)
+    username = factory.Faker("pystr")
+    email = factory.LazyAttribute(lambda x: "%s@exemple.com" % x.username)
 
     class Meta:
         model = User
 
 
 class CategoryFactory(factory.django.DjangoModelFactory):
-    title = factory.Faker('pystr')
-    slug = factory.Faker('pystr')
-    description = factory.Faker('pystr')
+    title = factory.Faker("pystr")
+    slug = factory.Faker("pystr")
+    description = factory.Faker("pystr")
     active = factory.Iterator([True, False])
 
     class Meta:
@@ -25,8 +25,8 @@ class CategoryFactory(factory.django.DjangoModelFactory):
 
 
 class ProductFactory(factory.django.DjangoModelFactory):
-    title = factory.Faker('pystr')
-    price = factory.Faker('pyfloat')
+    title = factory.Faker("pystr")
+    price = factory.Faker("pyfloat")
     category = factory.LazyAttribute(CategoryFactory)
 
     @factory.post_generation

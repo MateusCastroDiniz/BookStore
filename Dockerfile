@@ -33,6 +33,10 @@ RUN apt-get update \
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
+
 # setting virtual enviroment path and dependences for poetry
 WORKDIR $PYSETUP_PATH
 # copy of poetry's dependences
