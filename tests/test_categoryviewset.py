@@ -10,23 +10,23 @@ class TestCategoryViewSet(APITestCase):
     client = APIClient()
 
     def setUp(self):
-        self.category = CategoryFactory(title='categoriaTeste')
+        self.category = CategoryFactory(title="categoriaTeste")
 
     def test_get_category(self):
-        response = self.client.get(reverse('category-list'))
+        response = self.client.get(reverse("category-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        category_data = json.loads(response.content)['results']
+        category_data = json.loads(response.content)["results"]
 
-        self.assertEqual(category_data[0]['title'], self.category.title)
+        self.assertEqual(category_data[0]["title"], self.category.title)
 
     def test_create_category(self):
-        data = json.dumps({
-            'title': 'testando123'
-        })
-        response = self.client.post(reverse('category-list'), data=data, content_type='application/json')
+        data = json.dumps({"title": "testando123"})
+        response = self.client.post(
+            reverse("category-list"), data=data, content_type="application/json"
+        )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        created_category = Category.objects.get(title='testando123')
-        self.assertEqual(created_category.title, 'testando123')
+        created_category = Category.objects.get(title="testando123")
+        self.assertEqual(created_category.title, "testando123")
