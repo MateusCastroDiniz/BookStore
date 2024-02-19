@@ -9,4 +9,3 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Pedido de {self.user.username}: {[product.title for product in self.product.all()]}"
-

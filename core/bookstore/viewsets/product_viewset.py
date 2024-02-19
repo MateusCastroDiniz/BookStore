@@ -5,4 +5,4 @@ from core.bookstore.serializers import ProductSerializer
 
 class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
-    queryset = Product.objects.all().order_by('-id')
+    queryset = Product.objects.all().order_by("-id")

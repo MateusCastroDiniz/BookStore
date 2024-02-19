@@ -5,4 +5,4 @@ from core.bookstore.serializers.category_serializer import CategorySerializer
 
 class CategoryViewSet(ModelViewSet):
     serializer_class = CategorySerializer
-    queryset = Category.objects.all().order_by('-id')
+    queryset = Category.objects.all().order_by("-id")
