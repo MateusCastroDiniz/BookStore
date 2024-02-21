@@ -1,6 +1,6 @@
 name: Python Application
 
-on: [push, merge]
+on: [push]
 
 jobs:
   build:
