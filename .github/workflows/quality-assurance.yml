@@ -10,7 +10,7 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@master
         with: 
-          python-version: 3.9
+          python-version: [3.9]
       - name: Install Poetry
         run: | 
           pip install -U poetry
