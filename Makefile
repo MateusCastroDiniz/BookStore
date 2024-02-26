@@ -127,3 +127,10 @@ migrate:
 .PHONY: seed
 seed:
 	poetry run python manage.py seed
+
+.PHONY: quick-start
+quick-start: poetry run python manage.py migrate \
+	poetry run python manage.py runserver \
+	docker-compose up -d --build
+	docker-compose exec web python manage.py migrate
+	
