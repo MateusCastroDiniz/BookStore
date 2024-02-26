@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DEFAULT_TIMEOUT=100 \
     \
     # Poetry
-    POETRY_VERSION=1.7.1 \
+    POETRY_VERSION=1.8.1\
     # Set local instalation from poetry
     POETRY_HOME="/opt/poetry" \
     # Set poetry virtual enviroment in project root
