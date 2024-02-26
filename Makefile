@@ -26,7 +26,7 @@ PIP ?= pip3
 
 POETRY_OPTS ?=
 POETRY ?= poetry $(POETRY_OPTS)
-RUN_PYPKG_BIN = $(POETRY) run
+RUN_PYPKG_BIN = $(POETRY)run
 
 COLOR_ORANGE = \033[33m
 COLOR_RESET = \033[0m
@@ -45,9 +45,8 @@ version-python: ## Echos the version of Python in use
 
 .PHONY: test
 test: ## Runs tests
-	$(RUN_PYPKG_BIN) pytest \
-		$(PYTEST_OPTIONS) \
-		tests/*.py
+	$(RUN_PYPKG_BIN) python manage.py test tests
+	$(RUN_PYPKG_BIN) pytest
 
 ##@ Building and Publishing
 
