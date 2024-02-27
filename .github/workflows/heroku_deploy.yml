@@ -1,4 +1,4 @@
-name: Deploy container to Heroku
+name: Push Container to Heroku
 
 on:
   push:
@@ -32,13 +32,16 @@ jobs:
             machine api.heroku.com
               login $HEROKU_EMAIL
               password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
           EOF
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          $HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      - name: Add heroku remote on github
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      - name: Add Heroku remote
         run: heroku git:remote --app $HEROKU_APP_NAME
         env:
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME}}
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
         run: git push heroku main:main
