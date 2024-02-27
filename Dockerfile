@@ -40,7 +40,7 @@ RUN apt-get update \
 # setting virtual enviroment path and dependences for poetry
 WORKDIR $PYSETUP_PATH
 # copy of poetry's dependences
-COPY poetry.lock pyproject.toml ./
+COPY poetry.lock pyproject.toml README.md ./
 
 # install runtime deps - using $POETRY_VIRTUALENVS_IN_PROJECT
 RUN poetry install
