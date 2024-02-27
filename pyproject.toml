@@ -5,8 +5,8 @@ description = ""
 authors = ["Mateus Diniz <serv.mateus@gmail.com>"]
 readme = "README.md"
 packages = [
-    { include = "/bookstore/" , from = "core"},
-    { include = "./core/*.py"}
+    { include = "./core/"},
+    { include = "./core/bookstore/"}
 ]
 
 [tool.poetry.dependencies]
