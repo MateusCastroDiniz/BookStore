@@ -16,7 +16,6 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 class CategoryFactory(factory.django.DjangoModelFactory):
     title = factory.Faker("pystr")
-    slug = factory.Faker("pystr")
     description = factory.Faker("pystr")
     active = factory.Iterator([True, False])
 
