@@ -26,7 +26,7 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 # Using `builder-base` to build dependences and poetry's virtual enviroment
 FROM python-base as builder-base
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
+    && apt-get install -y \
         # deps for installing poetry and building python deps
         curl \
         build-essential
