@@ -1,1 +1,1 @@
-import bookstore
+from bookstore import urls

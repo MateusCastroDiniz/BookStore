@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-h=#aq9iakl-tg#d#%pm=&4&dgw^u@fpopaleb8^1k9b5dvow2w
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['locahost', '127.0.0.1', 'bk-store-e0b7a559a06f.herokuapp.com']
+ALLOWED_HOSTS = ['locahost', '127.0.0.1', 'bk-store-e0b7a559a06f.herokuapp.com', ]
 
 
 # Application definition
@@ -90,6 +90,7 @@ DATABASES = {
         "PORT": os.environ.get("SQL_PORT", "5432"),
         "USER": os.environ.get("SQL_USER", "dev"),
     }
+
 }
 
 
@@ -151,6 +152,6 @@ INTERNAL_IPS = [
 
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
