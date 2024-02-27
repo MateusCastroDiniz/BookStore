@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h=#aq9iakl-tg#d#%pm=&4&dgw^u@fpopaleb8^1k9b5dvow2w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['locahost', '127.0.0.1', 'bk-store-e0b7a559a06f.herokuapp.com', ]
 
@@ -150,7 +150,8 @@ INTERNAL_IPS = [
 
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = int(os.environ.get("DEBUG", default=0))
+# DEBUG = int(os.environ.get("DEBUG", default=0))
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
