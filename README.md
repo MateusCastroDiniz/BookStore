@@ -14,7 +14,7 @@ git clone git@github.com:MateusCastroDiniz/dCasa.git
 ```
 2. Install dependences:
 ```shell
-cd bookstore
+cd projeto_bookstore
 poetry install
 ```
 3. Run project:
@@ -34,7 +34,7 @@ git clone git@github.com:MateusCastroDiniz/dCasa.git
 ```
 2. Install dependences:
 ```shell
-cd bookstore
+cd projeto_bookstore
 poetry install
 ```
 3. Run local dev server:
