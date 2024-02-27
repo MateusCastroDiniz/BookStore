@@ -1,63 +1,53 @@
-# `python-base` sets up all our shared environment variables
 FROM python:3.10.12-slim as python-base
 
-    # python
 ENV PYTHONUNBUFFERED=1 \
-    # prevents python creating .pyc files
     PYTHONDONTWRITEBYTECODE=1 \
     \
-    # pip
+    # PIP
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_DEFAULT_TIMEOUT=100 \
     \
-    # poetry
-    # https://python-poetry.org/docs/configuration/#using-environment-variables
+    # Poetry
     POETRY_VERSION=1.8.1 \
-    # make poetry install to this location
+    # Set local instalation from poetry
     POETRY_HOME="/opt/poetry" \
-    # make poetry create the virtual environment in the project's root
-    # it gets named `.venv`
+    # Set poetry virtual enviroment in project root
     POETRY_VIRTUALENVS_IN_PROJECT=true \
-    # do not ask any interactive question
     POETRY_NO_INTERACTION=1 \
     \
-    # paths
-    # this is where our requirements + virtual environment will live
+    # Paths
+    # settings of project requirements and virtual enviroment
     PYSETUP_PATH="/opt/pysetup" \
     VENV_PATH="/opt/pysetup/.venv"
 
-
-# prepend poetry and venv to path
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
+# Using `builder-base` to build dependences and poetry's virtual enviroment
+FROM python-base as builder-base
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        # deps for installing poetry
+    && apt-get install -y \
+        # deps for installing poetry and building python deps
         curl \
-        # deps for building python deps
         build-essential
 
-# install poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
     && pip install psycopg2
 
-# copy project requirement files here to ensure they will be cached.
+# setting virtual enviroment path and dependences for poetry
 WORKDIR $PYSETUP_PATH
-COPY poetry.lock pyproject.toml ./
+# copy of poetry's dependences
+COPY poetry.lock pyproject.toml README.md ./
 
-# install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --no-dev
-
-# quicker install as runtime deps are already installed
+# install runtime deps - using $POETRY_VIRTUALENVS_IN_PROJECT
 RUN poetry install
 
 WORKDIR /app
 
-COPY . /app/
+COPY . app/
 
 EXPOSE 8000
 
