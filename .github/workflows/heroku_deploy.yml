@@ -2,7 +2,7 @@ name: Deploy container to Heroku
 
 on:
   push:
-    brancher:
+    branches:
       - 'main'
 
 jobs:
