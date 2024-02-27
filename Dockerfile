@@ -43,12 +43,17 @@ WORKDIR $PYSETUP_PATH
 COPY poetry.lock pyproject.toml README.md ./
 
 # install runtime deps - using $POETRY_VIRTUALENVS_IN_PROJECT
-RUN poetry install --no-root
+RUN poetry install --no-dev
+
+RUN poetry install
+
 
 WORKDIR /app
 
-COPY . app/
+COPY . /app/
 
 EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+RUN make quick-start
