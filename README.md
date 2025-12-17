@@ -10,11 +10,11 @@ A Bookstore app from Backend Python course from EBAC
 At the end of this step by step quick start your device must be able to run the project in <a href='localhost:8000/bookstore'>localhost:8000/bookstore</a> path.
 1. Clone this project:
 ```shell
-git clone git@github.com:MateusCastroDiniz/dCasa.git
+git clone git@github.com:MateusCastroDiniz/BookStore.git
 ```
 2. Install dependences:
 ```shell
-cd projeto_bookstore
+cd BookStore
 poetry install
 ```
 3. Run project:
